@@ -1,3 +1,5 @@
+# 워크플로 권한 재설정
+
 name: Deploy to GitHub Pages
 
 on:
