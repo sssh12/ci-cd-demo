@@ -1,0 +1,19 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: ["main"] # main 브랜치에 push될 때마다 워크플로우가 실행됩니다.
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 레포지토리 코드 체크아웃
+        uses: actions/checkout@v4
+
+      - name: GitHub Pages에 배포
+        uses: peaceiris/actions-gh-pages@v4 # peaceiris/actions-gh-pages는 깃허브 Pages 배포를 쉽게 해주는 액션입니다.
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./ # publish_dir: ./은 index.html이 있는 현재 디렉토리를 그대로 배포합니다.
