@@ -1,13 +1,16 @@
 name: Simple CI
 
-# on.push.branches: main 브랜치에 push(코드 업로드)되면 자동 실행됩니다.
+# on 아래에 push와 pull_request를 모두 추가하면,
+# main 브랜치에 직접 푸시할 때도,
+# main 브랜치로의 PR이 생성/업데이트될 때도, 자동으로 테스트가 돌게 됩니다.
 on:
   push:
     branches: ["main"] # main 브랜치에 push가 일어날 때마다 동작
+  pull_request:
+    branches: ["main"] # main 브랜치에 pull request가 생성될 때마다 동작
 
-# jobs.build.runs-on: Ubuntu 서버에서 실행(윈도우 PC에서 직접 실행하는 것이 아님).
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest # 깃허브가 자동으로 Ubuntu 서버를 빌려서 실행
 
     # steps: 자동화로 실행할 작업 목록.
